@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Fetch Formularz</title>
+    </head>
+    <body>
+        <h1><img src="/img/logo.png" />Fetch Formularz</h1>
+        <hr/>
+        <a href="/home.html">Home</a>
+
+        <div id="newsletterSignupFormContainer">
+            <form class="form-horizontal" role="form" id="newsletterSignupForm">
+                <input type="hidden" name="surname" value="tomek">
+                <input type="hidden" name="_csrf" value="FETCH">
+                <div>
+                    <label for="fieldColor">Ulubiony kolor: </label>
+                    <input type="text" id="fieldColor" name="color">
+                </div>
+                <div>
+                    <button type="submit">Prześlij</button>
+                </div>
+            </form>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        document.getElementById( 'newsletterSignupForm')    
+            .addEventListener( 'submit', evt => {
+                evt.preventDefault()
+                const form = evt.target
+                const body = JSON.stringify({
+                        _csrf: form.elements._csrf.value,
+                        surname: form.elements.surname.value,
+                        color: form.elements.color.value,
+                    }
+                )
+                const headers = { 'Content-Type': 'application/json' }
+                const container = document.getElementById('newsletterSignupFormContainer')
+
+                fetch('/api/newsletter-signup', { method: 'post', body, headers })
+                .then( resp => {
+                        if(resp.status < 200 || resp.status >= 300)
+                            throw new Error(`Żądanie zakończyło się niepowodzeniem ${resp.status}`)
+                        return resp.json()
+                    }
+                )
+                .then( json => {
+                        container.innerHTML = '<b>Dziękujemy!</b>'
+                    }
+                )
+                .catch( err => {
+                        container.innerHTML = '<b>Przykro nam, wystąpił problem'
+                    }
+                )
+            }
+        )
+        </script>
+</html>

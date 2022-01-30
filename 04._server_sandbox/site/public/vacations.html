@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Wakacje</title>
+    </head>
+    <body>
+        <h4>Wakacje</h4>
+        <div id="vacations">
+        </div>
+    </body>
+    <script type="text/javascript">
+        const container = document.getElementById('vacations')
+
+        const loadVacations = json => {
+            let ul = document.createElement( 'ul')
+            json.forEach( o => {
+                    let li = document.createElement( "li")
+                    li.appendChild( document.createTextNode( o.name))
+                    ul.appendChild( li)
+                }
+            )
+            container.append( ul)
+        }
+
+        fetch('/api/vacations', { method: "post", headers: { 'Content-Type': 'application/json' }})
+                .then( resp => {
+                        if(resp.status < 200 || resp.status >= 300)
+                            throw new Error(`Żądanie zakończyło się niepowodzeniem ${resp.status}`)
+                        return resp.json()
+                    }
+                )
+                .then( json => {
+                        loadVacations( json);
+                    }
+                )
+                .catch( err => {
+                        container.innerHTML = err
+                    }
+                )
+    </script>
+</html>

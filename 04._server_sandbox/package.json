@@ -1,0 +1,24 @@
+{
+  "name": "express-sandbox",
+  "version": "1.0.0",
+  "description": "Express server sandbox",
+  "main": "site/app.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint site"
+  },
+  "author": "Gatomek",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.19.1",
+    "cookie-parser": "1.4.6",
+    "express": "4.17.2",
+    "express-session": "1.17.2",
+    "mongoose": "6.1.8",
+    "morgan": "1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "8.7.0",
+    "jest": "27.4.7"
+  }
+}

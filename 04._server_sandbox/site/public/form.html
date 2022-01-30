@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Formularz</title>
+    </head>
+    <body>
+        <h1><img src="/img/logo.png" />Formularz</h1>
+        <hr/>
+        <a href="/home.html">Home</a>
+
+        <form action="/process-form" method="POST" role="form">
+            <input type="hidden" name="surname" value="tomek">
+            <input type="hidden" name="_csrf" value="HTML">
+            <div>
+                <label for="fieldColor">Ulubiony kolor: </label>
+                <input type="text" id="fieldColor" name="color">
+            </div>
+            <div>
+                <button type="submit">Prześlij</button>
+            </div>
+        </form>
+    </body>
+</html>
