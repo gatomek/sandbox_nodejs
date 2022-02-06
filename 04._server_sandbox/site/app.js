@@ -1,3 +1,8 @@
+const dotenv = require('dotenv')
+const result = dotenv.config()
+if (result.error) 
+    throw result.error;
+
 const express = require( "express")
 const app = express()
 const port = process.env.port || 3000
@@ -33,7 +38,6 @@ function applyWorkInClusterNotification( req, res, next)
 }
 
 function startServer(port) {
-
     app.disable( 'x-powered-by')
 
     /* --- */

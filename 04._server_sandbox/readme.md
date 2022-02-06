@@ -2,6 +2,7 @@
 
 ## Uruchomienie aplikacji
 node site/app.js
+npm start
 
 ## Uruchomienie aplikacji w klastrze aplikacji
 node site/cluster.js
@@ -24,6 +25,7 @@ npm run lint
 6. morgan          - agent logów - możliwość wyświetlania na konsoli w środowisku dev / zrzutu do pliku w środowisku prod
 7. eslint          - analizator statyczny kodu js
 8. jest            - framework do testów jednostkowych
+9. dotenv          - wygodne zarządzanie zmiennymi środowiskowymi
 
 
 ## Linki

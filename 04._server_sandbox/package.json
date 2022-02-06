@@ -5,13 +5,15 @@
   "main": "site/app.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint site"
+    "lint": "eslint site",
+    "start": "node site/app.js"
   },
-  "author": "Gatomek",
+  "author": "GaTomek",
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.19.1",
     "cookie-parser": "1.4.6",
+    "dotenv": "^16.0.0",
     "express": "4.17.2",
     "express-session": "1.17.2",
     "mongoose": "6.1.8",
